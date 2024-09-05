@@ -1,0 +1,43 @@
+---
+title: "concreteness"
+author: "Lucian"
+date: "2024-05-14"
+output: html_document
+---
+```{r}
+
+library(readr)
+
+# Specify column types
+high_mem <- read_csv('/users/lucian/library/cloudstorage/box-box/memomedia/high_mem_words.csv', col_types = cols(word = col_character()))
+low_mem <- read_csv('/users/lucian/library/cloudstorage/box-box/memomedia/low_mem_words.csv', col_types = cols(word = col_character()))
+
+```
+
+
+```{r}
+# Define a function to get concreteness score for a vector of words
+get_concreteness_scores <- function(words) {
+  sapply(words, function(word) {
+    score <- doc2concrete::doc2concrete(word)
+    if (length(score) > 0) {
+      return(score)
+    } else {
+      return(NA)  # Handle words that might not have a score
+    }
+  })
+}
+
+# Get concreteness scores for high_mem and low_mem words
+high_mem$concreteness <- get_concreteness_scores(high_mem$word)
+low_mem$concreteness <- get_concreteness_scores(low_mem$word)
+
+```
+
+```{r}
+write_csv(high_mem, '/users/lucian/library/cloudstorage/box-box/memomedia/high_mem_words_with_concreteness.csv')
+write_csv(low_mem, '/users/lucian/library/cloudstorage/box-box/memomedia/low_mem_words_with_concreteness.csv')
+```
+
+
+
