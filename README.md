@@ -1,2 +1,2 @@
 # memoMedia
-Data Analysis Scripts for memoMedia
+Data Collection & Analysis Scripts for Study: Image Memorability Enhances Social Media Virality
