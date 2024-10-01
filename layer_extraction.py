@@ -31,12 +31,16 @@ def layer_extract(image_path, layer):
 def rdm(activations):
     import torch
     import numpy as np
-    from sklearn.metrics.pairwise import cosine_similarity
+
+    # Flatten the activations and convert them to numpy
     activations = torch.stack([tensor.detach().flatten() for tensor in activations]).numpy()
-    
-    similarity_matrix = cosine_similarity(activations)
-    dissimilarity_matrix = 1 - similarity_matrix
-    
+
+    # Compute the Pearson correlation matrix
+    correlation_matrix = np.corrcoef(activations)
+
+    # Convert the correlation matrix to a dissimilarity matrix (1 - correlation)
+    dissimilarity_matrix = 1 - correlation_matrix
+
     return torch.tensor(dissimilarity_matrix, dtype=torch.float)
 
 
