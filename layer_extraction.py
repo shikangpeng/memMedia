@@ -31,16 +31,12 @@ def layer_extract(image_path, layer):
 def rdm(activations):
     import torch
     import numpy as np
-
-    # Flatten the activations and convert them to numpy
+    from sklearn.metrics.pairwise import cosine_similarity
     activations = torch.stack([tensor.detach().flatten() for tensor in activations]).numpy()
-
-    # Compute the Pearson correlation matrix
-    correlation_matrix = np.corrcoef(activations)
-
-    # Convert the correlation matrix to a dissimilarity matrix (1 - correlation)
-    dissimilarity_matrix = 1 - correlation_matrix
-
+    
+    similarity_matrix = cosine_similarity(activations)
+    dissimilarity_matrix = 1 - similarity_matrix
+    
     return torch.tensor(dissimilarity_matrix, dtype=torch.float)
 
 
@@ -191,7 +187,7 @@ torch.save({
     'Res_109': Res_109,
     'Res_145': Res_145,
     'Res_155': Res_155
-}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit.pth')
+}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit_scenes.pth')
 
 
 torch.save({
@@ -201,7 +197,7 @@ torch.save({
     'Res_109': rdmRes_109,
     'Res_145': rdmRes_145,
     'Res_155': rdmRes_155
-}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms_reddit.pth')
+}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms_reddit_scenes.pth')
 
 
 

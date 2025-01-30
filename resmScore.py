@@ -28,7 +28,7 @@ def resmem_predict(image_path):
 ### Reddit Usage ###
 ###
 # Change filename for each fetched data
-redditScenes = pd.read_csv('/Users/lucian/library/cloudstorage/box-box/memoMedia/reddit_Data/Fetch_Data3/reddit_scenes.csv')
+redditScores = pd.read_csv('/Users/lucian/library/cloudstorage/box-box/memoMedia/reddit_Data/Fetch_Data3/reddit_images_data3.csv')
 imgPaths = redditScenes['file_path']
 
 mem_scores = []
@@ -38,9 +38,9 @@ for file_idx, file in enumerate(imgPaths):
     prediction = resmem_predict(file)
     mem_scores.append(prediction)
 
-redditScenes['memorability_score'] = mem_scores
+redditScores['memorability_score'] = mem_scores
 
-redditScenes.to_csv('/Users/lucian/library/cloudstorage/box-box/memoMedia/reddit_Data/Fetch_Data3/reddit_scenes_scores.csv', index=False)
+redditScores.to_csv('/Users/lucian/library/cloudstorage/box-box/memoMedia/reddit_Data/Fetch_Data3/reddit_scores.csv', index=False)
 
 
 
