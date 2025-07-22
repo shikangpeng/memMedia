@@ -3,7 +3,7 @@
 """
 Created on Wed Nov 20 18:32:58 2024
 
-@author: Shikang
+@author: Shikang Peng
 """
 import torch
 import torchvision.models as models
@@ -18,7 +18,7 @@ import os
 # Load the pre-trained ResNet-152 model
 resnet152 = models.resnet152(pretrained=True)
 
-# Layers to extract 
+# Layers to extract
 layers_to_extract = [11, 36, 73, 109, 145, 155]
 
 # Hook function to store activations
@@ -90,10 +90,10 @@ def rdm(activations):
     import numpy as np
     from sklearn.metrics.pairwise import cosine_similarity
     activations = torch.stack([tensor.detach().flatten() for tensor in activations]).numpy()
-    
+
     similarity_matrix = cosine_similarity(activations)
     dissimilarity_matrix = 1 - similarity_matrix
-    
+
     return torch.tensor(dissimilarity_matrix, dtype=torch.float)
 
 
@@ -126,7 +126,7 @@ for file_idx, file in enumerate(image_paths):
 rdmRes_11 = rdm(Res_11)
 # Plot the array
 plt.imshow(rdmRes_11.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res11 RDM')
 plt.show()
 
@@ -142,11 +142,11 @@ for file_idx,  file in enumerate(image_paths):
     print(f"Processing image {file_idx + 1}/{len(image_paths)}: {image_path} at Layer 36")
     activations = layer_extract(image_path, 36)
     Res_36.append(activations)
-    
+
 rdmRes_36 = rdm(Res_36)
 # Plot the array
 plt.imshow(rdmRes_36.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res36 RDM')
 plt.show()
 
@@ -161,11 +161,11 @@ for file_idx,  file in enumerate(image_paths):
     print(f"Processing image {file_idx + 1}/{len(image_paths)}: {image_path} at Layer 73")
     activations = layer_extract(image_path, 73)
     Res_73.append(activations)
-    
+
 rdmRes_73 = rdm(Res_73)
 # Plot the array
 plt.imshow(rdmRes_73.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res73 RDM')
 plt.show()
 
@@ -178,12 +178,12 @@ for file_idx,  file in enumerate(image_paths):
     print(f"Processing image {file_idx + 1}/{len(image_paths)}: {image_path} at Layer 109")
     activations = layer_extract(image_path, 109)
     Res_109.append(activations)
-    
+
 
 rdmRes_109 = rdm(Res_109)
 # Plot the array
 plt.imshow(rdmRes_109.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res109 RDM')
 plt.show()
 
@@ -196,11 +196,11 @@ for file_idx,  file in enumerate(image_paths):
     print(f"Processing image {file_idx + 1}/{len(image_paths)}: {image_path} at Layer 145")
     activations = layer_extract(image_path, 145)
     Res_145.append(activations)
-    
+
 rdmRes_145 = rdm(Res_145)
 # Plot the array
 plt.imshow(rdmRes_145.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res145 RDM')
 plt.show()
 
@@ -216,11 +216,11 @@ for file_idx,  file in enumerate(image_paths):
     print(f"Processing image {file_idx + 1}/{len(image_paths)}: {image_path} at Layer 155")
     activations = layer_extract(image_path, 155)
     Res_155.append(activations)
-    
+
 rdmRes_155 = rdm(Res_155)
 # Plot the array
 plt.imshow(rdmRes_155.numpy(), cmap='viridis')  # 'cmap' is the color map
-plt.colorbar()  
+plt.colorbar()
 plt.title('Res155 RDM')
 plt.show()
 

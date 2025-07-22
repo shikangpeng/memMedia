@@ -187,7 +187,7 @@ torch.save({
     'Res_109': Res_109,
     'Res_145': Res_145,
     'Res_155': Res_155
-}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit_scenes.pth')
+}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit.pth')
 
 
 torch.save({
@@ -197,7 +197,7 @@ torch.save({
     'Res_109': rdmRes_109,
     'Res_145': rdmRes_145,
     'Res_155': rdmRes_155
-}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms_reddit_scenes.pth')
+}, '/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms_reddit.pth')
 
 
 

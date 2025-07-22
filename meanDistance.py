@@ -20,7 +20,7 @@ def compute_rdm(activations):
 
 
 # Load tensors
-layers = torch.load('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit_scenes.pth')
+layers = torch.load('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/Layers_reddit.pth')
 
 rdms = {}
 
@@ -64,7 +64,7 @@ for layer, rdm in rdms.items():
     mean_dissimilarities_per_image[layer] = np.mean(np.ma.masked_equal(rdm, 0), axis=1)
 
 dissimilarities = pd.DataFrame(mean_dissimilarities_per_image)
-dissimilarities.to_csv('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/meanDis_image_scenes.csv', index = False)
+dissimilarities.to_csv('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/meanDis_image.csv', index = False)
 
 res_11 = rdms['Res_11']
 np.fill_diagonal(res_11,0)
@@ -79,12 +79,12 @@ np.fill_diagonal(res_145,0)
 res_155 = rdms['Res_155']
 np.fill_diagonal(res_155,0)
 
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res11_rdm_scenes.csv',res_11,delimiter=',')
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res36_rdm_scenes.csv',res_36,delimiter=',')
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res73_rdm_scenes.csv',res_73,delimiter=',')
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res109_rdm_scenes.csv',res_109,delimiter=',')
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res145_rdm_scenes.csv',res_145,delimiter=',')
-np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res155_rdm_scenes.csv',res_155,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res11_rdm.csv',res_11,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res36_rdm.csv',res_36,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res73_rdm.csv',res_73,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res109_rdm.csv',res_109,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res145_rdm.csv',res_145,delimiter=',')
+np.savetxt('/Users/lucian/Library/CloudStorage/Box-Box/memoMedia/reddit_Data/rdms/res155_rdm.csv',res_155,delimiter=',')
 
 
 
