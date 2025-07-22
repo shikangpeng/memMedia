@@ -12,9 +12,9 @@ import csv
 
 # Setup the Reddit API client
 reddit = praw.Reddit(
-    client_id='Vgtmmo74wJzLW7yMyffMzg',
-    client_secret='Fkn527RRCIIMCXcSONaSAURYkGpdng',
-    user_agent='MacOS RedditImageResponses scraper by u/memMedia')
+    client_id='XXXXXXXXXXX',
+    client_secret='XXXXXXXXXXX',
+    user_agent='XXXXXXXXXXX')
 
 # List of Reddit post URLs to process
 urls_to_fetch = [
@@ -31,7 +31,7 @@ for url in urls_to_fetch:
     try:
         # Fetch submission from URL
         submission = reddit.submission(url=url)
-        
+
         # Skip posts that have already been processed
         if submission.id in fetched_ids or submission.url in fetched_urls:
             continue
@@ -84,7 +84,3 @@ try:
     print(f"Data successfully saved to {csv_file}")
 except IOError as e:
     print(f"I/O error during CSV file writing: {e}")
-
-
-
-

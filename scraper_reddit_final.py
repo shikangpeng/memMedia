@@ -16,9 +16,9 @@ import pandas as pd
 
 # Setup the Reddit API client
 reddit = praw.Reddit(
-    client_id='Vgtmmo74wJzLW7yMyffMzg',
-    client_secret='Fkn527RRCIIMCXcSONaSAURYkGpdng',
-    user_agent='MacOS RedditImageResponses scraper by u/memMedia')
+    client_id='XXXXXXXXXXX',
+    client_secret='XXXXXXXXXXX',
+    user_agent='XXXXXXXXXXX')
 
 subreddits = ['pics', 'pic', 'Images']
 data = []

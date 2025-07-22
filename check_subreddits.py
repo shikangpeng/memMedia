@@ -14,9 +14,9 @@ urls_to_fetch = list(all_data['post_url'])
 
 # Create Reddit instance
 reddit = praw.Reddit(
-    client_id='Vgtmmo74wJzLW7yMyffMzg',
-    client_secret='Fkn527RRCIIMCXcSONaSAURYkGpdng',
-    user_agent='MacOS RedditImageResponses scraper by u/memMedia'
+    client_id='xxxxxxxx',
+    client_secret='xxxxxxx',
+    user_agent='xxxxxxxx'
 )
 
 results = []
